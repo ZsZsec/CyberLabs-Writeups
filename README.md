@@ -1,2 +1,15 @@
-# CyberLabs-Writeups
-Repositorio de documentación y writeups de laboratorios de ciberseguridad, incluyendo máquinas de Hack The Box (HTB), TryHackMe (THM) VulnHub, así como ejercicios de Red Team y Blue Team. El objetivo es centralizar experiencias de aprendizaje, técnicas de explotación, análisis de seguridad y defensa para referencia personal y educativa.
+🛡 Ciberseguridad
+Repositorio de writeups, notas y técnicas ofensivas utilizadas en prácticas de hacking ético, pentesting y Red Teaming.
+
+Contenido
+Writeups de CTFs y máquinas vulnerables (Hack The Box, TryHackMe, etc.)
+Técnicas de enumeración y reconocimiento en entornos reales
+Post-explotación y escaladas de privilegios
+Abuso de configuraciones y técnicas de evasión
+Objetivo
+Documentar el aprendizaje continuo y compartir conocimiento técnico con la comunidad de ciberseguridad.
+Este repositorio también me ayuda a mejorar mis habilidades prácticas en entornos simulados y reales.
+
+Disclaimer
+Este contenido tiene fines exclusivamente educativos.
+No apoyo ni promuevo el uso de estas técnicas sobre sistemas que no hayan sido autorizados explícitamente para pruebas de seguridad.
