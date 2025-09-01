@@ -194,7 +194,7 @@ ssh john@10.10.10.16.139.30 -i id_rsa
 
 ahora en el escritorio como el usuario john procedemos a leer la flag de usuario.
 
-![[Pasted image 20250815181728.png]]
+<img width="415" height="46" alt="Image" src="https://github.com/user-attachments/assets/02058d3e-321a-4aae-a37e-7ff790191ade" />
 
 # Escalada de privilegios
 
@@ -220,7 +220,7 @@ Durante la enumeración de privilegios, se identificó que el usuario `john` p
 
 la descargamos en nuestra maquina host 
 
-![[Pasted image 20250815175500.png]]
+<img width="761" height="360" alt="Image" src="https://github.com/user-attachments/assets/b19ea0d1-36e5-4ac7-b8a5-bb17bf32d729" />
 
 
 ## **¿Por qué lo necesitamos para explotar LXD?**
@@ -243,11 +243,11 @@ Para abusar del grupo `lxd`, necesitamos:
 
 despues de instalar el software procederemos a hostearlo en el puerto 80 para luego descargarnoslo desde la maquina victima 
 
-![[Pasted image 20250815180109.png]]
+<img width="969" height="105" alt="Image" src="https://github.com/user-attachments/assets/fce57e05-9a35-4c2b-bf9b-c353eccd7e56" />
 
 luego en la maquina victima procederemos a descargar el archivo 
 
-![[Pasted image 20250815180157.png]]
+<img width="1917" height="265" alt="Image" src="https://github.com/user-attachments/assets/f7b49494-6b9a-4de0-89c7-6431aae91d04" />
 
 El primer paso crítico es importar la imagen de Alpine Linux que generamos previamente (o descargamos) en el sistema vulnerable usando el comando `lxc image import`.
 
@@ -333,7 +333,8 @@ Este comando configura un "dispositivo" en el contenedor que **monta el director
 
 Finalmente, ejecutamos una shell dentro del contenedor y usamos el comando `lxc exec ignite /bin/sh`
 
-![[Pasted image 20250815181258.png]]
+<img width="563" height="99" alt="Image" src="https://github.com/user-attachments/assets/d8acb7cd-d2d5-4279-bc14-b22c4324671d" />
+
 
 y finalmente obtuvimos ROOT!!
 
