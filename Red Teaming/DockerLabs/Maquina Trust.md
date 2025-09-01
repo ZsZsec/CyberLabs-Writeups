@@ -125,7 +125,7 @@ Encontramos una página interesante: `secret.php`.
 
 Al visitar `http://172.18.0.2/secret.php`, la página muestra un mensaje curioso:
 
-![[Trust machine.png]]
+<img width="1262" height="612" alt="Image" src="https://github.com/user-attachments/assets/5085604e-4bfb-4bac-a997-06d6531fa612" />
 
 Este mensaje sugiere la existencia de un usuario llamado **mario**, lo cual nos da una **pista directa de un posible nombre de usuario para acceso SSH**.
 
