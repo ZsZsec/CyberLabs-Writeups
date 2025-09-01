@@ -154,7 +154,8 @@ Entre todos los recursos enumerados, `/00` llamó la atención por su **tamaño 
 
 Al acceder a `http://10.10.114.161/static/00`, se visualizó una serie de **notas de desarrollo** aparentemente dejadas por un desarrollador del proyecto. Entre las líneas se encontraba la referencia a un directorio interno:
 
-![[maquina valley tryhackme.png]]
+<img width="547" height="237" alt="Image" src="https://github.com/user-attachments/assets/f958ed7c-dc16-4e02-9778-173b2ec838b6" />
+
 
 dev notes from valleyDev:
 -add wedding photo examples
@@ -168,12 +169,12 @@ Este tipo de anotaciones son típicas de entornos de staging o pruebas internas,
 
 La ruta `http://10.10.114.161/dev1243224123123` contenía un **formulario de autenticación**, lo cual indicaba un posible mecanismo de acceso restringido.
 
-![[valley machine login.png]]
+<img width="1918" height="749" alt="Image" src="https://github.com/user-attachments/assets/2bc33912-a40f-48cf-9dfb-6c65e634ac74" />
 
 
 Al inspeccionar el sitio mediante las herramientas de desarrollador del navegador, se identificó un archivo JavaScript externo denominado `dev.js`. Su análisis reveló credenciales en texto plano codificadas en el propio script:
 
-![[Maquina valley machine.png]]
+<img width="615" height="238" alt="Image" src="https://github.com/user-attachments/assets/2045eef6-a012-49eb-9e96-37397e981c2d" />
 
 ```js
 if (username === "siemDev" && password === "california") {
@@ -246,7 +247,8 @@ Los archivos `siemFTP.pcapng` y `siemHTTP1.pcapng` no contenían información re
 
 Este hallazgo representa una vulnerabilidad típica en entornos sin cifrado, donde datos sensibles pueden ser capturados a través de ataques de tipo **sniffing de tráfico HTTP**.
 
-![[credenciales wireshark valley.png]]  
+<img width="1916" height="843" alt="Image" src="https://github.com/user-attachments/assets/1168c571-f8a9-4f99-9155-baff77cd8403" />
+
 
 las credenciales encontradas son username:`valleyDev` password:`ph0t0s1234` estas serian las credenciales para entrar al panel de ssh, 
 
@@ -385,7 +387,7 @@ despues de descargarlo en nuestra maquina local decidimos ejecutar el comando `s
 └─$ strings valleyAuthenticator | less
 ```
 
-![[Pasted image 20250730174023.png]]
+<img width="642" height="566" alt="Image" src="https://github.com/user-attachments/assets/4bd56405-8aeb-47b1-8f66-7fcfd81bd4bf" />
 
 
 despues de desempaquetar el archivo UPX cone el comando `upx -d` procederemos a revisar las strings de el ejecutable con el comando `strings valleyAuthenticator`  y mientras revisamos nos encontraremos con 2 posibles hashes 
