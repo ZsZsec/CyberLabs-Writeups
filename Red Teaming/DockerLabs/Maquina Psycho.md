@@ -134,7 +134,7 @@ La respuesta fue positiva: se cargó el contenido del archivo `/etc/passwd`, mos
 
 Esto confirma la existencia de una **vulnerabilidad de inclusión local de archivos**.
 
-![[LFI.png]]
+<img width="1919" height="837" alt="Image" src="https://github.com/user-attachments/assets/4a16dabd-1220-4487-8c93-729a73451064" />
 
 ## Implicaciones de seguridad
 
