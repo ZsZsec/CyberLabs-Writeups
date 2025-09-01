@@ -65,7 +65,7 @@ Se encontró que el **puerto 80 (HTTP)** está abierto, corriendo un servidor **
 
 Al visitar la web en el navegador, observé una página sencilla con el título _"El Misterio del Ascensor Embrujado"_.
 
-![[maquina elevator.png]]
+<img width="1913" height="703" alt="Image" src="https://github.com/user-attachments/assets/213ebaeb-08ab-42ab-9c04-bd7c0ae6a56f" />
 
 Al hacer clic en el botón del ascensor, aparecía un popup que decía:
 
@@ -180,7 +180,8 @@ La existencia de un archivo `upload.php` y `archivo.html` sugería un posible **
 Al visitar `http://172.17.0.2/themes/archivo.html`, se mostraba una interfaz donde se podía subir archivos con la siguiente indicación:
 
 
-![[maquina eelvator.png]]
+<img width="1919" height="702" alt="Image" src="https://github.com/user-attachments/assets/bb4069ba-6a1c-4be4-bae4-2ca15345d4ef" />
+
 
 > "Selecciona un archivo de imagen (solo .jpg)"
 
@@ -195,7 +196,7 @@ Esto confirmó que estábamos ante un **formulario de subida de archivos**, apar
 
 Para comprobar si el servidor validaba correctamente los archivos, utilice una **reverse shell** de PentestMonkey con extensión doble: `.php.jpg`. Esto es una técnica común para evadir validaciones simples del lado del cliente o servidor.
 
-![[maquina elevatrr.png]]
+<img width="1137" height="715" alt="Image" src="https://github.com/user-attachments/assets/603624b6-7430-4cfd-9e5d-38cde7d5f4b0" />
 
 ```bash
 ─(zikuta㉿zikuta)-[~/elevator]
@@ -204,7 +205,7 @@ Para comprobar si el servidor validaba correctamente los archivos, utilice una *
 
 Guardé el archivo como `shell.php.jpg` y lo subí desde el formulario. El servidor aceptó el archivo sin queja y generó un enlace para visualizarlo. Esto indicaba que **el código PHP dentro del archivo sí podría interpretarse si se accedía directamente** a él como archivo `.php.jpg`.
 
-![[maquina elevador.png]]
+<img width="592" height="121" alt="Image" src="https://github.com/user-attachments/assets/92df4858-c491-4378-88f3-c28a1495d46d" />
 
 ### Estableciendo conexión reversa
 
@@ -434,7 +435,8 @@ Desglose:
 
 Resultado:
 
-![[maquina elevator root.png]]
+<img width="486" height="124" alt="Image" src="https://github.com/user-attachments/assets/2efbf99f-7a3b-4826-be34-941d3f5f9c62" />
+
 
 ### Riesgo total
 
