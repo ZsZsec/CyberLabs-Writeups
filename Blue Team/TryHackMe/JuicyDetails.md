@@ -29,13 +29,13 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 - Revisar/aislar la IP origen si es externa; si es interna, iniciar trazado de origen y escalado a TI.
 - Habilitar alertas de escaneo en IDS/IPS y limitar acceso a servicios administrativos desde redes no confiables.
 
-![[Pasted image 20250823055916.png]]
+<img width="1590" height="492" alt="Image" src="https://github.com/user-attachments/assets/fb3f39dd-f91c-4a1c-bd21-d9b4ed9f732a" />
 
 ## Sesión 2 — Fuzzing / Enumeración de directorios (09:08:30 – 09:15:35)
 
 **Evidencia:** múltiples peticiones HTTP con user-agent `Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0` y patrones de requests típicos de feroxbuster/dirbuster; duración hasta **09:15:35**.
 
-![[Pasted image 20250823060241.png]]
+<img width="1598" height="447" alt="Image" src="https://github.com/user-attachments/assets/22a0be95-30f7-491f-a7fb-39fc29db36c7" />
 
 **Qué pasó**:
 
@@ -58,7 +58,7 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 **Evidencia:** ráfaga de **144** intentos contra `/rest/user/login` en ~3 segundos, herramienta identificada: **Hydra**; registro de un inicio de sesión exitoso a las **09:16:31 +0000**.
 
 
-![[hydra status 200.png]]
+<img width="1558" height="777" alt="Image" src="https://github.com/user-attachments/assets/cedffc40-f7e8-4184-93dd-bdb7c0d8cc6e" />
 
 **Qué pasó**:
 
@@ -80,7 +80,7 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 **Evidencia:** peticiones con payloads de SQLi detectadas; uso de **sqlmap** y posteriormente consultas `UNION SELECT` automatizadas vía **curl 7.74.0** entre **09:29:58** y **09:32:51**. Se apunta a columnas de la tabla `Users` (id, email, password).
 
 
-![[Pasted image 20250823061724.png]]
+<img width="1780" height="752" alt="Image" src="https://github.com/user-attachments/assets/18145c6b-8451-480e-b02d-6163ad869e17" />
 
 **Qué pasó**
 
@@ -106,7 +106,7 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 **Evidencia:** múltiples requests con `curl/7.74.0` realizando `UNION SELECT` y recuperando columnas; las entradas en access.log muestran respuestas con datos.
 
 
-![[Pasted image 20250823063153.png]]
+<img width="1632" height="218" alt="Image" src="https://github.com/user-attachments/assets/405baab9-94c7-4893-a074-2417b03d7c92" />
 
 
 **Qué pasó**:
@@ -129,7 +129,7 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 **Evidencia:** nuevo ciclo de enumeración de directorios con feroxbuster; secuencia de accesos a rutas enumeradas, incluyendo `/backup, /promotion, /admin`.
 
 
-![[Pasted image 20250823062212.png]]
+<img width="1603" height="331" alt="Image" src="https://github.com/user-attachments/assets/b48acb61-80be-416b-9a57-84f733126194" />
 
 **Qué pasó:**
 
@@ -151,7 +151,7 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 
 **Evidencia:** conexiones FTP desde `192.168.10.5` usando usuario `anonymous`; transferencia (GET) de dos archivos: `www-data.bak` y `coupons_2013.md.bak`.
 
-![[ftp_smug.png]]
+<img width="1435" height="307" alt="Image" src="https://github.com/user-attachments/assets/c3d294aa-2c60-411f-9d39-7844188f168e" />
 
 
 **Qué pasó:**
@@ -175,7 +175,7 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 
 **Evidencia:** logs indican conexión SSH con usuario `www-data` y obtención de shell por parte del atacante; secuencia posterior consistente con comandos interactivos.
 
-![[ssh_www-data_smug.png]]
+<img width="1397" height="313" alt="Image" src="https://github.com/user-attachments/assets/3661b95f-ad09-4c64-9d67-c60a5a1bc7c3" />
 
 **Qué pasó:**
 
