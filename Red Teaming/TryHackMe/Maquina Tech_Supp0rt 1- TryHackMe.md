@@ -135,7 +135,7 @@ Esto nos reveló tres pistas importantes:
 Accedí a la URL `http://10.10.95.117/subrion/panel`, lo cual me llevó al panel de inicio de sesión del CMS Subrion.
 
 Como la contraseña parecía cifrada, utilicé CyberChef para probar varias recetas automáticas hasta que se descifró correctamente como: `Scam2021`  
-![[techsupport cyberchef.png]]
+<img width="1919" height="745" alt="Image" src="https://github.com/user-attachments/assets/1a342252-5c61-48d4-818a-813b85c2380b" />
 
 ## Acceso al panel Subrion
 
