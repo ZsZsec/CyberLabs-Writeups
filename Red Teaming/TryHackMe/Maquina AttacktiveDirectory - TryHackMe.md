@@ -277,7 +277,7 @@ El contenido del archivo era una cadena codificada:
 
 Esta cadena, al ser pasada por **CyberChef** usando el filtro `Magic`, reveló las credenciales en texto claro:
 
-![[Pasted image 20250807183037.png]]
+<img width="955" height="183" alt="Image" src="https://github.com/user-attachments/assets/9f9d5ba8-542c-48f7-8ab0-230233968596" />
 
 ```bash
 Usuario: backup@spookysec.local  
