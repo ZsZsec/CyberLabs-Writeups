@@ -112,7 +112,7 @@ Inicialmente se intentó subir una reverse shell (`.php`), pero fue rechazada po
 
 Se configuró **Burp Intruder** para probar diferentes extensiones usando la lista `common_extensions.txt`. Se observó que únicamente los archivos con extensiones `.zip` y `.phar` devolvían una respuesta consistente (mismo **Content-Length** de 253), lo cual sugería que ambos tipos eran aceptados.
 
-![[burpsuite intruder.png]]
+<img width="1468" height="780" alt="Image" src="https://github.com/user-attachments/assets/9e5c3e42-c9ed-47d8-a17e-c0e17030b164" />
 
 
 
