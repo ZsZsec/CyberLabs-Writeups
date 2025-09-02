@@ -193,7 +193,7 @@ A partir de los archivos de registro (`access.log`) se identificaron las siguien
 - Buscar binarios/cronjobs/keys colocados por el atacante para persistencia.
 - Aislar la máquina comprometida y tomar imagen forense antes de limpiarla.
 
-## Resumen ejecutivo 
+## Resumen  
 
 El atacante siguió una campaña clásica: reconocimiento → fuzzing → fuerza bruta (login exitoso) → inyección SQL (exfiltración de credenciales) → búsqueda de archivos sensibles → exfiltración via FTP → SSH para shell persistente. Los puntos críticos fueron la existencia de FTP anónimo, falta de mitigaciones contra fuerza bruta y la vulnerabilidad SQL en el endpoint de búsqueda.
 
