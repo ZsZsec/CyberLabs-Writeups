@@ -42,7 +42,7 @@ El resultado mostró, entre otros, **10000/tcp open http MiniServ 1.890 (Webmin)
 
 
 
-![[Pasted image 20250904083228.png]]
+<img width="1911" height="800" alt="Image" src="https://github.com/user-attachments/assets/28270816-55fb-4fee-9ce0-730844955262" />
 
 A partir de la detección de `Webmin`, se realizó búsqueda de vulnerabilidades públicas y exploits disponibles. `Webmin`  tuvo una serie de versiones afectadas por inyección de comandos en `password_change.cgi` (variantes alrededor de 1.882–1.921; la versión 1.890 es especialmente citada en la divulgación inicial), y documentación pública detalla que el parámetro vulnerable es `old` (y en algunos casos `expired`) permitiendo inyección al no filtrar adecuadamente entrada que termina ejecutándose en shell. Estas referencias públicas y análisis de la presencia de un backdoor en binarios distribuidos motivaron el intento de explotación.
 
@@ -52,11 +52,11 @@ A partir de la detección de `Webmin`, se realizó búsqueda de vulnerabilidades
 Dado que existía un módulo público en Metasploit y varios scripts PoC, se procedió con Metasploit para lanzar el exploit de manera rápida y reproducible. El flujo general usado fue:
 
 
-![[Pasted image 20250904083444.png]]
+<img width="1623" height="597" alt="Image" src="https://github.com/user-attachments/assets/68d9bea2-cec5-49a7-ae7d-d0cf0afb52f7" />
 
 Cargar el módulo correspondiente (en Metasploit suele encontrarse como `linux/http/webmin_backdoor` o mediante el exploit publicado para Webmin 1.920/1.890). El módulo encapsula el payload que explota la inyección en `password_change.cgi` y establece un canal interactivo
 
-![[Pasted image 20250904083533.png]]
+<img width="1100" height="320" alt="Image" src="https://github.com/user-attachments/assets/27d8a091-39fc-4d43-a8da-bfd7e08ce3d4" />
 
 Tras el exploit, se obtiene una shell remota proveída por el contexto en el que la vulnerabilidad ejecutó el comando; en la máquina objetivo se observó que el acceso resultante tenía permisos ampliados (root o equivalentes), lo que permitió moverse por el sistema y leer las flags del CTF. 
 
@@ -65,7 +65,7 @@ Tras el exploit, se obtiene una shell remota proveída por el contexto en el que
 Al recibir una shell básica de la explotación, es práctica estándar “mejorar la TTY” para tener un entorno interactivo utilizable (historial, señales, tab completion). En este caso se empleó el clásico comando Python para salto de pty:
 
 
-![[Pasted image 20250904083624.png]]
+<img width="477" height="88" alt="Image" src="https://github.com/user-attachments/assets/4e4cb04d-6308-4a1a-850d-ccacd4cabf94" />
 
 `python -c 'import pty; pty.spawn("/bin/bash")'` 
 
