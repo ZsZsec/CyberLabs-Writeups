@@ -431,7 +431,7 @@ cp /bin/bash /tmp/bash && chmod +s /tmp/bash
 
 
 
-![[CRONJOBS.png]]
+<img width="1912" height="716" alt="Image" src="https://github.com/user-attachments/assets/6791c158-54da-4b5f-8647-8d7203240b74" />
 
 Luego de ejecutar el cron job, nos dirigimos a la carpeta `/tmp`, donde ya se encuentra copiado el binario de `bash` con el bit SUID activado. Esto nos permite ejecutar ese binario con permisos de root. Usamos los siguientes comandos:
 
