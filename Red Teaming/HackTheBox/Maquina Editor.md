@@ -70,7 +70,8 @@ Dada la presencia de Jetty en el puerto 8080, existe la posibilidad de que la m�
 
 Accediendo al servicio web alojado en el puerto **8080**, se presenta una interfaz simple sin demasiada información útil. Sin embargo, se observa la existencia de un subdominio llamado **`wiki`**, lo cual podría ser significativo si está asociado a un servicio como XWiki o un sistema de documentación que pueda ser vulnerable.
 
-![[Pasted image 20251119123358.png]]
+<img width="1466" height="732" alt="Image" src="https://github.com/user-attachments/assets/4cf2b876-7270-433a-8d7d-009bd948f884" />
+
 
 Para determinar si existían más subdominios relacionados con el dominio principal `editor.htb`, realizamos fuzzing de subdominios utilizando **ffuf**:
 
@@ -79,7 +80,8 @@ Para determinar si existían más subdominios relacionados con el dominio princi
 └─$ ffuf -u http://editor.htb -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host:FUZZ.editor.htb" -fs 154
 ```
 
-![[Pasted image 20251119123542.png]]
+<img width="1624" height="556" alt="Image" src="https://github.com/user-attachments/assets/0bf941e4-2370-4aba-a2d1-04ca49408ff3" />
+
 
 El escaneo devuelve únicamente el subdominio existente:
 
@@ -93,7 +95,8 @@ Esto confirma que el subdominio `wiki` es el único disponible, por lo que será
 
 Al acceder al subdominio identificado previamente (`wiki.editor.htb`), se presenta una instancia de **XWiki**. De inmediato, revisé la información de la instalación y encontré un dato crítico:
 
-![[Pasted image 20251119124004.png]]
+<img width="1332" height="396" alt="Image" src="https://github.com/user-attachments/assets/dcd84207-4967-427b-aa66-9f7b0a1d3a04" />
+
 
 La instancia está corriendo **XWiki versión 15.10.8**, una versión vulnerable a un fallo grave de **ejecución remota de código sin autenticación (RCE)**. `CVE-2025-24893 `
 
@@ -194,7 +197,7 @@ Este sera el codigo que nos otorgara ejecucion remota de comandos, simplemente l
 
 XWiki utiliza Hibernate para conectarse a la base de datos. Las credenciales se almacenan en **`/etc/xwiki/hibernate.cfg.xml`**, por lo que busqué dicho archivo desde la shell:
 
-![[Pasted image 20251119130514.png]]
+<img width="1765" height="620" alt="Image" src="https://github.com/user-attachments/assets/14fac79c-a3d3-4d38-bb13-86063684b43d" />
 
 El archivo devolvió varias líneas, pero una de ellas contenía la contraseña legítima:
 
@@ -277,7 +280,8 @@ gcc -static payload.c -o nvme -Wall -Werror -Wpedantic
 
 Para llevar a cabo la **escalada de privilegios**, primero serví desde mi máquina atacante el binario **`nvme`** ya compilado utilizando un servidor web simple en Python.
 
-![[Pasted image 20251119134006.png]]
+<img width="757" height="183" alt="Image" src="https://github.com/user-attachments/assets/eaf3e851-26ee-4d04-925f-10a3c8026e1f" />
+
 
  Luego, desde la máquina víctima descargué el binario junto con el script de explotación correspondiente:
  
@@ -324,7 +328,7 @@ El script:
 
 Una vez descargados ambos archivos, asigné permisos de ejecución al script y lo ejecute
 
-![[Pasted image 20251119134057.png]]
+<img width="1484" height="184" alt="Image" src="https://github.com/user-attachments/assets/6b78e461-d076-4cad-93f4-d81888babc19" />
 
 El exploit funcionó correctamente, obteniendo una shell como **root**:
 
