@@ -56,13 +56,13 @@ Tenemos dos puertos abiertos corriendo diferentes servicios `SSH:22 Apache:80` y
 
 Mi siguiente paso fue dirigirme a el servidor web de la maquina victima para intentar identificar posibles vulnerabilidades web que pueda explotar para tener accesso a la maquina
 
-![[Pasted image 20251101100631.png]]
+<img width="1354" height="609" alt="Image" src="https://github.com/user-attachments/assets/a5dff442-7be3-44f0-ac01-e160bbb7b1ff" />
 
 al entrar a la url me redirecciona al directorio `/login` pero al ver que me puedo crear una cuenta pues me creo una.
 
 Ya una vez logueado tenemos lo siguiente
 
-![[Pasted image 20251101100748.png]]
+<img width="1392" height="751" alt="Image" src="https://github.com/user-attachments/assets/5b595762-972c-4a9a-8f17-0e453d83e61a" />
 
 El servidor web nos permite subir archivos `XML` y `XSLT` 
 
@@ -325,13 +325,13 @@ www-data@conversor:~/conversor.htb/instance$
 
 Despues en mi maquina lo abri con sqlite para explorar la base de datos y me encontre con todas las contrasenas de los usuarios en formato `hash MD5`
 
-![[Pasted image 20251102084639.png]]
+<img width="1382" height="814" alt="Image" src="https://github.com/user-attachments/assets/5d961367-7c75-4e07-9e49-0038bbc6342c" />
 
 ### John
 
 Procedo a intentar `crackear` la contrasena del usuario `fismathack` con la herramienta `john the ripper`
 
-![[Pasted image 20251102084755.png]]
+<img width="1391" height="365" alt="Image" src="https://github.com/user-attachments/assets/d97616ca-00ca-489e-8c00-0f1d01dca50e" />
 
 	fismathack:Keepmesafeandwarm
 
@@ -569,7 +569,7 @@ sudo /usr/sbin/needrestart
 
 Cuando needrestart analiza el proceso Python del script, carga nuestro módulo malicioso y ejecuta el payload.
 
-![[Pasted image 20251119111138.png]]
+<img width="936" height="430" alt="Image" src="https://github.com/user-attachments/assets/4f03fbfd-edca-46aa-83fa-b39ad442a3b7" />
 
 # Flujo del Ataque 
 
