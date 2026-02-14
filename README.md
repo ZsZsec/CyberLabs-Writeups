@@ -1,30 +1,52 @@
-# 🛡️ Repositorio de Ciberseguridad
+#  Cybersecurity Writeups & Pentesting Notes
 
-![Status](https://img.shields.io/badge/Estado-Activo-brightgreen?style=for-the-badge)  
-![CTFs](https://img.shields.io/badge/Writeups-CTFs-blue?style=for-the-badge)  
-![Ethical Hacking](https://img.shields.io/badge/Hacking-Ético-red?style=for-the-badge)
+![Hack The Box](https://img.shields.io/badge/Hack%20The%20Box-111927?style=for-the-badge&logo=hackthebox&logoColor=9FEF00)
+![TryHackMe](https://img.shields.io/badge/TryHackMe-212C42?style=for-the-badge&logo=tryhackme&logoColor=white)
+![DockerLabs](https://img.shields.io/badge/DockerLabs-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-Repositorio dedicado a **writeups**, **notas técnicas** y **técnicas ofensivas** utilizadas en prácticas de **hacking ético**, **pentesting**  **Red Teaming**.
+Repositorio personal donde documento la resolución de máquinas vulnerables y retos tipo CTF.
 
----
+Aquí documento paso a paso la resolución de máquinas vulnerables, principalmente de:
 
-## 📂 Contenido
-
-- **Writeups de CTFs y máquinas vulnerables**  
-  (Hack The Box, TryHackMe, DockerLabs, etc.)  
-- **Técnicas de enumeración y reconocimiento**  
-- **Post-explotación y escaladas de privilegios**  
-- **Abuso de configuraciones y técnicas de evasión**  
+- **Hack The Box**
+- **TryHackMe**
+- **DockerLabs**
 
 ---
 
-## 🎯 Objetivo
+##  ¿Qué vas a encontrar aquí?
 
-Documentar mi aprendizaje continuo y **compartir conocimiento técnico** con la comunidad de ciberseguridad, mejorando mis habilidades prácticas en **entornos simulados y reales**.
+- **Writeups completos** (recon → explotación → privesc)  
+- **Enumeración** (Linux / Windows / Active Directory)  
+- **Post-explotación** (pivoting, creds hunting, lateral movement)  
+- **Escalada de privilegios** (misconfigs, servicios, AD abuse)  
+
 
 ---
 
-## ⚠️ Disclaimer
+## Estructura típica de un writeup
 
-> **Este contenido tiene fines exclusivamente educativos.**  
-> No apoyo ni promuevo el uso de estas técnicas en sistemas sin autorización previa.
+La mayoría de writeups siguen un flujo parecido:
+
+1. **Reconocimiento** (Nmap, enum web, servicios, SMB, LDAP, etc.)
+2. **Explotación inicial**
+3. **Acceso como usuario**
+4. **Escalada de privilegios**
+5. **Resumen final**
+
+---
+
+##  Objetivo del repositorio
+
+Este repo contiene writeups técnicos y notas de pentesting basadas en laboratorios.
+
+La idea es mantener un registro **claro**, **reproducible** y **bien documentado** de cada máquina.
+
+---
+
+##  Disclaimer (importante)
+
+Este repositorio es **solo educativo**.  
+No está destinado para atacar sistemas reales sin autorización.
+
+
