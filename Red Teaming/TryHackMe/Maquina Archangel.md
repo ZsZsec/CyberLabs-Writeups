@@ -69,12 +69,12 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Al acceder al servidor web en el puerto 80, identifiqué en la interfaz un correo de soporte:
  support@mafialive.thm. Esto sugiere la existencia de un dominio interno de la organización, por lo que procedí a agregarlo al archivo `/etc/hosts` para facilitar el acceso.
 
-![[Pasted image 20251116103322.png]]
+<img width="1917" height="641" alt="Image" src="https://github.com/user-attachments/assets/4dd0dd07-edd0-4521-a305-8d6f6502897b" />
 
 
 Luego al recargar el sitio web nos encontraremos con la primera flag 
 
-![[Pasted image 20251116104036.png]]
+<img width="971" height="258" alt="Image" src="https://github.com/user-attachments/assets/eab4858d-c535-4bac-b9d8-dfc49b8761d2" />
 
 ## Enumeración Web y Descubrimiento de LFI
 
@@ -116,7 +116,7 @@ by Ben "epi" Risher 🤓                 ver: 2.12.0
 
 Al acceder a `test.php`, descubrí una funcionalidad que permitía interactuar con la aplicación. Al hacer clic en un botón, observé que la URL cambiaba a:
 
-![[Pasted image 20251116104453.png]]
+<img width="1057" height="312" alt="Image" src="https://github.com/user-attachments/assets/8effa40d-99e5-4267-821c-808a8582681a" />
 
 ## Explotación de Vulnerabilidad LFI (Local File Inclusion)
 
@@ -126,7 +126,7 @@ Este patrón en la URL indica claramente una **vulnerabilidad de Local File Inc
 
 Al intentar acceder al archivo `/etc/passwd` directamente mediante `http://mafialive.thm/test.php?view=/etc/passwd` 
 
-![[Pasted image 20251116123523.png]]
+<img width="850" height="298" alt="Image" src="https://github.com/user-attachments/assets/170724a5-474b-48fb-912c-ce8c27cc93f0" />
 
 El sistema respondió con un mensaje de error: **"Sorry, Thats not allowed"**, indicando la presencia de un mecanismo de filtrado que bloquea el acceso a rutas sensibles del sistema.
 
@@ -153,7 +153,7 @@ http://mafialive.thm/test.php?view=php://filter/convert.base64-encode/resource=/
 3. **Flexibilidad**: Permite leer archivos del sistema
 
 
-![[Pasted image 20251116130353.png]]
+<img width="1918" height="372" alt="Image" src="https://github.com/user-attachments/assets/995986d1-4869-4861-b6dc-a8368ec69914" />
 
 
 ### Ejecución y Resultados
@@ -190,7 +190,7 @@ Dado que el filtro restringe el LFI a un directorio específico, procedí con *
 
 **Ruta del log de Apache identificada:** `/var/log/apache2/access.log`
 
-![[Pasted image 20251116142614.png]]
+<img width="1918" height="372" alt="Image" src="https://github.com/user-attachments/assets/fceea468-2b90-4255-a739-c32d509725c2" />
 
 ### Log Poisoning
 
@@ -209,8 +209,7 @@ El **Log Poisoning** es una técnica que consiste inyectar código malicioso e
 **Paso 2: Modificar el User-Agent y Envenenar Log** 
 Cambié el header User-Agent para inyectar una webshell PHP:
 
-![[Pasted image 20251116143046.png]]
-
+<img width="1919" height="287" alt="Image" src="https://github.com/user-attachments/assets/a2ef5aa7-633f-4e60-a27d-f672af699c36" />
 Al enviar esta petición, el servidor registra nuestro User-Agent malicioso en:
 
 ```bash
@@ -222,8 +221,7 @@ Al enviar esta petición, el servidor registra nuestro User-Agent malicioso en:
 **Paso 4: Acceder al log envenenado**  
 Utilicé la vulnerabilidad LFI para incluir el archivo de log, pero con un bypass del filtro:
 
-![[Pasted image 20251116143312.png]]
-
+<img width="1257" height="738" alt="Image" src="https://github.com/user-attachments/assets/ab3ab8e7-8411-41ad-b043-5dd1b4c00e0f" />
 **Explicación del bypass:**
 
 - `view=/var/www/html/development_testing/` - Cumple con el filtro
@@ -253,19 +251,20 @@ Primero preparé mi máquina atacante para recibir la conexión reversa:
 
 Utilicé la vulnerabilidad LFI con log poisoning para ejecutar la reverse shell en Python:
 
-![[Pasted image 20251116143924.png]]
+<img width="1917" height="423" alt="Image" src="https://github.com/user-attachments/assets/6805a00b-96ed-4a6a-b50c-30482333b7d4" />
+
 
 ### Paso 3: Reconocimiento del Sistema
 
 Una vez recibida la reverse shell y estabilizada con penelope, identifiqué la presencia del usuario **warchangel** en el sistema:
 
-![[Pasted image 20251116144024.png]]
+<img width="1665" height="507" alt="Image" src="https://github.com/user-attachments/assets/3c9c10af-498e-44e5-9c1b-323a69b5662a" />
 
 # Escalada de privilegios 
 
 Al obtener acceso como `www-data` procedi a checar si habia alguna `cronjob` corriendo por detras y me encontre con lo siguiente
 
-![[Pasted image 20251116204804.png]]
+<img width="1505" height="441" alt="Image" src="https://github.com/user-attachments/assets/4ee5eeda-440b-427f-abfc-3cfbe79d6a2f" />
 
 habia una cronjob corriendo el archivo `helloworld.sh` asi que decidi ir hacia el directorio `/opt` para checar que permisos tenia yo sobre el archivo.
 
@@ -282,12 +281,11 @@ Encontre que tengo permisos para modificar el archivo, asi que decidi agregarle 
 
 y mientras tanto me puse en escucha en otro puerto utilizando la herramienta `penelope`
 
-![[Pasted image 20251116205351.png]]
+<img width="1444" height="330" alt="Image" src="https://github.com/user-attachments/assets/713a0c00-997e-4f52-b8fb-e501d274dc52" />
 
 ahora que ya soy el usuario `archangel` tengo permisos para poder interactuar con los otros archivos, entre ellos me encontre un binario llamado `backup` al hacerle `strings` al binario `backup` me encontre con algo que llamo mucho mi atencion.
 
-![[Pasted image 20251116205512.png]]
-
+<img width="1036" height="522" alt="Image" src="https://github.com/user-attachments/assets/3a755b19-4c1c-41cd-958c-f2f0f667561f" />
 Durante el análisis del binario `backup`, se ejecutó `strings` sobre el archivo y se observó que el programa utilizaba el comando `cp` sin emplear una ruta absoluta, es decir
 
 El uso de comandos sin ruta absoluta (`/bin/cp`) es una mala práctica de seguridad, ya que permite que el sistema busque el ejecutable a través de las rutas definidas en la variable de entorno `$PATH`. Si un atacante puede colocar un ejecutable malicioso con el mismo nombre en un directorio que se evalúe primero que `/bin`, puede forzar al programa a ejecutar dicho archivo.  
@@ -359,8 +357,7 @@ Finalmente, se ejecutó el binario `backup`, el cual posee el bit SUID estableci
 
 Al ejecutarse, el programa intentó utilizar el comando `cp` como parte de su funcionalidad interna. Debido a la manipulación del PATH, terminó ejecutando nuestro binario malicioso en su lugar. Esto resultó en la obtención de una shell con privilegios de root:
 
-![[Pasted image 20251116210355.png]]
-
+<img width="721" height="111" alt="Image" src="https://github.com/user-attachments/assets/2cd5bb6e-b138-4c73-9ce0-f9f5cdfe62bf" />
 # Cuadro de Explotacion
 
 | Etapa                             | Descripción                                                      | Herramientas               | Resultado                                                |
