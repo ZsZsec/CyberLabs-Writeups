@@ -143,7 +143,7 @@ Aunque el archivo comienza con bytes de GIF, cuando Tomcat procesa un archivo `.
 #### Petición HTTP Maliciosa
 
 
-![[Pasted image 20260108144627.png]]
+<img width="788" height="621" alt="Image" src="https://github.com/user-attachments/assets/2b5ecbfe-311a-4cff-8e4c-8f035ea8cc33" />
 
 #### Elementos Críticos de la Petición
 
@@ -174,7 +174,8 @@ Aunque el archivo comienza con bytes de GIF, cuando Tomcat procesa un archivo `.
 # Response 
 
 
-![[Pasted image 20260108144744.png]]
+<img width="792" height="620" alt="Image" src="https://github.com/user-attachments/assets/cbda43ce-8be6-40ad-bd2e-68fe3f17dd74" />
+
 #### Diagrama del Flujo de Ataque
 
 ```
@@ -246,7 +247,7 @@ curl "http://strutted.htb/shell.jsp?cmd=pwd"
 # Output: /var/lib/tomcat9
 ```
 
-![[Pasted image 20260108144138.png]]
+<img width="1917" height="410" alt="Image" src="https://github.com/user-attachments/assets/97d92d0a-0832-423b-a34f-30f8fdf1a3d6" />
 
 ---
 
@@ -341,7 +342,7 @@ http://strutted.htb/shell.jsp?cmd=base64%20/etc/tomcat9/tomcat-users.xml
 #### Extracción y Decodificación
 
 
-![[Pasted image 20260108144342.png]]
+<img width="1692" height="623" alt="Image" src="https://github.com/user-attachments/assets/664969a4-d9df-46c7-bad7-9a0dd4e77b3f" />
 
 1. **Copiar el output base64** desde el código fuente de la página (`Ctrl+U` o botón derecho → Ver código fuente)
     
@@ -405,7 +406,7 @@ james@strutted:~$ cat user.txt
 
 Una vez dentro del sistema como el usuario `james`, verificamos los permisos sudo:
 
-![[Pasted image 20260108145616.png]]
+<img width="1250" height="215" alt="Image" src="https://github.com/user-attachments/assets/1392dc35-933f-417f-89f8-1ba94749dd3a" />
 
 ** Hallazgo crítico:**
 
@@ -455,7 +456,7 @@ Desglose de parámetros:
 ### Explotación
 
 
-![[Pasted image 20260108145938.png]]
+<img width="951" height="191" alt="Image" src="https://github.com/user-attachments/assets/f7e60c37-d97e-47d0-9814-ff6f93172c37" />
 
 #### Paso 1: Preparar el Script Malicioso
 
@@ -506,8 +507,7 @@ Maximum file limit reached: 1
 
 #### Paso 4: Recibir Shell de Root
 
-![[Pasted image 20260108150206.png]]
-
+<img width="956" height="566" alt="Image" src="https://github.com/user-attachments/assets/9a5c9925-c777-4704-9173-b3235f2baea5" />
 ### Diagrama de Escalada de Privilegios
 
 ```
