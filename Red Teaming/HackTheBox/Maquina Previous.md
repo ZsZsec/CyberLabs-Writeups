@@ -69,7 +69,8 @@ Se procede a añadir el dominio al archivo `/etc/hosts` para una correcta resolu
 
 Con el dominio configurado, realizamos un reconocimiento inicial del stack web utilizando `whatweb`.
 
-![[Pasted image 20260115171050.png]]
+<img width="1918" height="148" alt="Image" src="https://github.com/user-attachments/assets/c5a12aab-1cc4-4d5e-a647-ee08817d2640" />
+
 Salida relevante:
 
 `Email[jeremy@previous.htb] X-Powered-By[Next.js] HTTPServer[nginx/1.18.0 (Ubuntu)] Script[application/json]`
@@ -98,7 +99,7 @@ http://previous.htb/api/auth/signin?callbackUrl=%2Fdocs
 
 Esto confirma el uso del sistema de autenticación **NextAuth**, comúnmente utilizado junto a Next.js.
 
-![[Pasted image 20260115171801.png]]
+<img width="1236" height="758" alt="Image" src="https://github.com/user-attachments/assets/cba4fd83-eb5e-44f6-acd1-b4edbc64fd80" />
 
 
 ## Análisis de Autenticación
@@ -196,7 +197,7 @@ Para ello, se eliminan completamente las cookies de sesión (`next-auth.*`) y el
 GET /docs HTTP/1.1 Host: previous.htb x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate, br Connection: keep-alive Upgrade-Insecure-Requests: 1 Priority: u=0, i`
 ```
 
-![[Pasted image 20260115173122.png]]
+<img width="635" height="227" alt="Image" src="https://github.com/user-attachments/assets/7193a662-a476-4fdd-91f9-8917ef0d9956" />
 
 ---
 
@@ -207,7 +208,7 @@ HTTP/1.1 200 OK Server: nginx/1.18.0 (Ubuntu) X-Powered-By: Next.js Content-Type
 ```
 
 
-![[Pasted image 20260115173241.png]]
+<img width="630" height="669" alt="Image" src="https://github.com/user-attachments/assets/7703a710-ca9d-4a83-9092-bcdcc45d9e1d" />
 
 El servidor responde correctamente con un **HTTP 200 OK**, devolviendo el contenido completo de la página `/docs`, a pesar de que:
 
@@ -263,7 +264,7 @@ href="/docs/examples"
 
 Aplicando nuevamente el bypass del middleware (CVE-2025-29927), fue posible acceder sin autenticación a la ruta `/docs/examples`, confirmando que **todas las rutas protegidas dependen exclusivamente del middleware vulnerable**.
 
-![[Pasted image 20260115173607.png]]
+<img width="762" height="387" alt="Image" src="https://github.com/user-attachments/assets/e82f66d3-c062-4837-9c73-80af2eb6cb24" />
 
 ## Descarga de ejemplos y análisis del endpoint `/api/download`
 
@@ -357,13 +358,13 @@ Con LFI confirmado, el siguiente objetivo fue identificar archivos internos de l
 .next/server/pages-manifest.json
 ```
 
-![[Pasted image 20260115174610.png]]
+<img width="632" height="272" alt="Image" src="https://github.com/user-attachments/assets/23448595-e4e3-4fc7-b1bc-b1388e7d9350" />
 
 ### Respuesta
 
 El archivo revela todas las rutas internas y su correspondencia con archivos del servidor:
 
-![[Pasted image 20260115174636.png]]
+<img width="632" height="440" alt="Image" src="https://github.com/user-attachments/assets/07acf4ea-daaf-41b1-aa72-43a512f067f9" />
 
 Este archivo es especialmente interesante, ya que contiene la lógica de autenticación de la aplicación.
 
@@ -373,14 +374,14 @@ Este archivo es especialmente interesante, ya que contiene la lógica de autenti
 Se procede a descargar el archivo de autenticación de NextAuth:
 
 
-![[Pasted image 20260115174853.png]]
+<img width="630" height="293" alt="Image" src="https://github.com/user-attachments/assets/2f11fb6f-6ba7-412c-a9ff-4a359f351be9" />
 
 
 ### Respuesta
 
 El código fuente revela un proveedor de autenticación por credenciales:
 
-![[Pasted image 20260115175322.png]]
+<img width="632" height="623" alt="Image" src="https://github.com/user-attachments/assets/e83eedde-267a-4a4e-8018-772780441d3c" />
 
 
 De aquí se obtienen las siguientes credenciales:
@@ -393,7 +394,7 @@ De aquí se obtienen las siguientes credenciales:
 
 Aunque el usuario `jeremy` no aparece en el archivo `/etc/passwd`, se intentó reutilizar las credenciales obtenidas para acceder al servicio SSH expuesto en el puerto 22.
 
-![[Pasted image 20260115175535.png]]
+<img width="1015" height="457" alt="Image" src="https://github.com/user-attachments/assets/78dabe1c-749b-4f41-82df-cd7d9cf88303" />
 
 La autenticación fue exitosa, confirmando que las credenciales de la aplicación web **fueron reutilizadas a nivel de sistema**, permitiendo obtener acceso interactivo al servidor.
 
@@ -405,7 +406,7 @@ La autenticación fue exitosa, confirmando que las credenciales de la aplicació
 Una vez obtenido acceso como el usuario `jeremy`, se procede a enumerar los privilegios sudo disponibles:
 
 
-![[Pasted image 20260116014717.png]]
+<img width="1871" height="242" alt="Image" src="https://github.com/user-attachments/assets/f0c9107c-f03e-45b0-9885-41ca2953c300" />
 
 Esto indica que el usuario `jeremy` puede ejecutar **Terraform como root**, pero únicamente con el directorio de trabajo establecido en `/opt/examples` y usando el comando `apply`.
 
@@ -508,7 +509,7 @@ jeremy@previous:~$ sudo /usr/bin/terraform -chdir=/opt/examples apply
 Con el bit SUID aplicado a `/bin/bash`, se obtiene una shell privilegiada:
 
 
-![[Pasted image 20260116020228.png]]
+<img width="886" height="421" alt="Image" src="https://github.com/user-attachments/assets/63f8aa3f-fd47-4f34-bf89-5fba02c4ba88" />
 
 ---
 
